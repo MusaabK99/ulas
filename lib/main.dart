@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ulas/bus.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'bus.dart';
+import 'station.dart';
+import 'home.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,20 +19,49 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: busPage(),
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class mainPage extends StatelessWidget {
-  const mainPage({Key? key}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int selectedPage = 1;
+  final _pageOption = [BusPage(), HomePage(), StationPage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ULAŞ'),
-        elevation: 10,
+      body: _pageOption[selectedPage],
+      bottomNavigationBar: ConvexAppBar(
+        style: TabStyle.textIn,
+        items: [
+          TabItem(icon: Icons.directions_bus, title: 'Bus'),
+          TabItem(icon: Icons.place, title: 'location'),
+          TabItem(
+              icon: Text(
+                "D",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 23,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              title: 'Station'),
+        ],
+        backgroundColor: Colors.red,
+        initialActiveIndex: selectedPage,
+        onTap: (int index) {
+          setState(() {
+            selectedPage = index;
+          });
+        },
       ),
     );
   }

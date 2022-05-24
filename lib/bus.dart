@@ -1,28 +1,25 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
-class busPage extends StatelessWidget {
-  const busPage({Key? key}) : super(key: key);
+class BusPage extends StatelessWidget {
+  const BusPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ULAŞ'),
-        elevation: 10,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              color: Colors.blue,
-              child: SizedBox(height: 50),
-            )
-          ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'ULAŞ',
+            style: TextStyle(fontSize: 25),
+          ),
+          elevation: 10,
         ),
-      ),
-    );
+        body: ListView.builder(
+          itemCount: 100,
+          itemBuilder: (context, index) {
+            return ListTile(title: Text('test'));
+          },
+        ));
   }
 }
