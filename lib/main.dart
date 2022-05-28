@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ulas/bus.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'bus.dart';
 import 'station.dart';
 import 'home.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // const MyApp({Key? key}) : super(key: key);
@@ -16,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ulaş',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
