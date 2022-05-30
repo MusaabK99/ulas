@@ -50,7 +50,7 @@ class _MapScreenState extends State<MapScreen> {
                 child: Icon(
                   Icons.circle,
                   size: 20.0,
-                  color: Colors.blue,
+                  color: Colors.red,
                 ),
               ),
             ),

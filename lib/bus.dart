@@ -84,28 +84,30 @@ class DetailsPage extends StatelessWidget {
           ),
           elevation: 10,
         ),
-        body: Center(
-          child: Container(
-            alignment: Alignment.center,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    '${bus.name}',
-                    style: TextStyle(fontSize: 25),
+        body: ListView(children: [
+          Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ListTile(
+                    title: Text(
+                      '${bus.name}',
+                      style: TextStyle(fontSize: 25),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                Center(
-                  child: Text(
-                    'from  ${bus.stops[0]}\n to ${bus.stops[1]}',
-                    style: TextStyle(fontSize: 25),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Duraklar :  \n 1 - ${bus.stops[0]} \n 2 - ${bus.stops[1]}',
+                      style: TextStyle(fontSize: 25),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ));
+                ],
+              ))
+        ]));
   }
 }
 
