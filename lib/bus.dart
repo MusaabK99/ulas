@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, duplicate_ignore, avoid_unnecessary_containers, unnecessary_new, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unnecessary_string_interpolations
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -27,6 +29,7 @@ class BusPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        // ignore: prefer_const_constructors
         title: Text(
           'ULAŞIM',
           style: TextStyle(fontSize: 25),
@@ -82,6 +85,12 @@ class DetailsPage extends StatelessWidget {
             'ULAŞIM',
             style: TextStyle(fontSize: 25),
           ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {},
+            )
+          ],
           elevation: 10,
         ),
         body: ListView(children: [
