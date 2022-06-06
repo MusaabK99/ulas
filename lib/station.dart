@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, avoid_unnecessary_containers, unnecessary_new, use_key_in_widget_constructors, prefer_const_constructors_in_immutables, unnecessary_string_interpolations
 
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -258,6 +257,7 @@ class DetailsPage extends StatelessWidget {
         children: <Widget>[
           GoogleMap(
             mapType: MapType.normal,
+            zoomControlsEnabled: false,
             initialCameraPosition: CameraPosition(
               target: LatLng(
                   double.parse(stop.latitude), double.parse(stop.longitude)),

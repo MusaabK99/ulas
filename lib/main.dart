@@ -6,7 +6,7 @@ import 'bus.dart';
 import 'station.dart';
 import 'home.dart';
 
-void main() => runApp(MyApp());
+void main() => {WidgetsFlutterBinding.ensureInitialized(), runApp(MyApp())};
 
 class MyApp extends StatelessWidget {
   // const MyApp({Key? key}) : super(key: key);
