@@ -32,7 +32,8 @@ class _BusPageState extends State<BusPage> {
 
   Position? _currentUserPosition;
 
-  double? distanceImMeter = 0.0;
+  double distanceImMeter = 0.0;
+  late List distance = [];
 
   Future _getTheDistance() async {
     _currentUserPosition = await Geolocator.getCurrentPosition(
@@ -43,13 +44,13 @@ class _BusPageState extends State<BusPage> {
       double buslat = double.parse(bus.latitude);
       double buslng = double.parse(bus.longitude);
       distanceImMeter = await Geolocator.distanceBetween(
-          _currentUserPosition!.latitude,
-          _currentUserPosition!.longitude,
-          buslat,
-          buslng);
+              _currentUserPosition!.latitude,
+              _currentUserPosition!.longitude,
+              buslat,
+              buslng) /
+          10;
 
-      var distance = distanceImMeter?.round().toInt();
-      distance?.round();
+      distance.add(distanceImMeter);
       setState(() {});
     }
   }
@@ -60,7 +61,22 @@ class _BusPageState extends State<BusPage> {
     super.initState();
   }
 
-  // distanceImMeter = await Geolocator.distanceBetween(
+  // // bus moving simulation but not worling
+  // Future _busMoving() async {
+  //   var data = await distance;
+  //   for (var i = 0; i < data.length; i++) {
+  //     Timer.periodic(Duration(seconds: 1), (timer) {
+  //       while (data[i] != 0) {
+  //         data[i]--;
+  //         if (data[i] < 10) {
+  //           print(data);
+  //           return data[i];
+  //         }
+  //       }
+  //     });
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +108,8 @@ class _BusPageState extends State<BusPage> {
                     title: Text(snapshot.data[index].name),
                     subtitle: _getTheDistance() == null
                         ? Text('Distance: ' + snapshot.data[index].distance)
-                        : Text('Distance: ' + distanceImMeter.toString()),
+                        : Text(
+                            'Distance: ' + distance[index].round().toString()),
                     onTap: () {
                       Navigator.push(
                           context,
